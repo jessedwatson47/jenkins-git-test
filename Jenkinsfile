@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Fetch the source code from Git"
+                echo "Fetch the source code from Git."
                 echo "Compile the code and generate any necessary artefacts using Maven"
             }
             post {
