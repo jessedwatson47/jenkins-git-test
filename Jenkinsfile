@@ -31,14 +31,14 @@ pipeline {
          }
          stage('Code Analysis') {
             steps {
-                echo "Check the quality of the code"
+                echo "Check the quality of the code with SonarQube Cloud"
             }
             post {
                 success {
-                    echo "CodeSonar: Code quality check success!"
+                    echo "Code quality check success!"
                 }
                 failure {
-                    echo "CodeSonar: Code quality check failed."
+                    echo "Code quality check failed."
                 }
             }
          }
@@ -55,7 +55,7 @@ pipeline {
                 }
             }
         }
-         stage('Deploy') {
+         stage('Deploy to Staging') {
             steps {
                 echo "Deploying the application to EC2 staging branch "
             }
