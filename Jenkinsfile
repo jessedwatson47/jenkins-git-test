@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Fetch the source code from Git"
-                echo "Compile the code and generate any necessary artefacts"
+                echo "Compile the code and generate any necessary artefacts using Maven"
             }
             post {
                 success {
@@ -15,10 +15,10 @@ pipeline {
                 }
             }
         }
-         stage('Test') {
+         stage('Testing') {
             steps {
-                echo "Unit tests"
-                echo "Integration tests"
+                echo "Jest: Unit tests"
+                echo "Jest: Integration tests"
             }
             post {
                 success {
@@ -35,10 +35,10 @@ pipeline {
             }
             post {
                 success {
-                    echo "Code quality check success!"
+                    echo "CodeSonar: Code quality check success!"
                 }
                 failure {
-                    echo "Code quality check failed."
+                    echo "CodeSonar: Code quality check failed."
                 }
             }
          }
@@ -57,7 +57,7 @@ pipeline {
         }
          stage('Deploy') {
             steps {
-                echo "Deploying the application to staging branch"
+                echo "Deploying the application to EC2 staging branch "
             }
             post {
                 success {
@@ -70,7 +70,7 @@ pipeline {
          }
          stage('Integration Tests') {
             steps {
-                echo "Integration tests"
+                echo "Selenium: Integration tests"
             }
             post {
                 success {
@@ -83,7 +83,7 @@ pipeline {
          }
          stage('Deploy to Production') {
             steps {
-                echo "Deploying code to production"
+                echo "Deploying code to EC2 production instance"
             }
             post {
                 success {
